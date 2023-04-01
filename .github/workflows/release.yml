@@ -52,7 +52,7 @@ jobs:
             release-v2-${{ runner.os }}-go-
 
       - uses: actions/cache@v3
-        name: Releaser cache
+        name: Build cache
         with:
           path: |
             ./out/
