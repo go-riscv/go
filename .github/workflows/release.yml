@@ -47,9 +47,9 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: release-v2-${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: release-v2-${{ runner.os }}-go
           restore-keys: |
-            release-v2-${{ runner.os }}-go-
+            release-v2-${{ runner.os }}-go
 
       - uses: actions/cache@v3
         name: Bootstrap cache
