@@ -67,3 +67,18 @@ jobs:
 
       - name: Pack
         run: ./pack.sh ${{ env.VERSION }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./out/go-linux-riscv64-bootstrap.tbz
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz.sha256.txt
+          if-no-files-found: error

@@ -19,6 +19,7 @@ pushd "./out/${VERSION}/go/bin/"
     mv ${bindir}/* .
     rm -rf ${bindir}
   fi
+  file go gofmt
 popd
 
 pushd ./out
