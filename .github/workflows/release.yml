@@ -52,11 +52,11 @@ jobs:
             release-v2-${{ runner.os }}-go-
 
       - uses: actions/cache@v3
-        name: Build cache
+        name: Bootstrap cache
         with:
           path: |
-            ./out/
-          key: ${{ github.ref }}
+            ./out/go-linux-riscv64-bootstrap.tbz
+          key: bootstrap
 
       - name: Setup
         run: ./setup.sh

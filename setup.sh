@@ -23,6 +23,17 @@ fi
 
 set -x
 
+BOOTSTRAP_FILE="go-linux-riscv64-bootstrap.tbz"
+if [ -f "${BOOTSTRAP_FILE}" ]
+then
+  echo "Using ${BOOTSTRAP_FILE}"
+  tar -xjf "${BOOTSTRAP_FILE}"
+  echo "Bootstrap restored from ${BOOTSTRAP_FILE}"
+  exit 0
+fi
+
+
+echo "Downloading ${FILE} to boostrap"
 curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/${FILE}" -o "${FILE}"
 echo "${HASH} ${FILE}" | sha256sum --check
 rm -rf "./go"
