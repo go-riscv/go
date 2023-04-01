@@ -41,7 +41,7 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: go-release-${{ hashFiles('**/go.sum') }}
+          key: go-release-${{ hashFiles('go.sum') }}
           restore-keys: |
             go-release-
 
