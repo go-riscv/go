@@ -30,10 +30,11 @@ fi
 
 set -x
 mkdir -p "${out}"
+src="go${ver}.src.tar.gz"
 
-pushd "${out}"
-  curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/go${ver}.src.tar.gz" | tar -xz
-  pushd go/src
-    ./make.bash
-  popd
-popd
+cd _out
+curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/${src}" -o "${src}"
+tar -C "${ver}" -xzf "${src}"
+
+cd "${ver}/go/src"
+./make.bash
