@@ -11,7 +11,7 @@ ver="${GOVERSION:-1.20.2}"
 
 if [ ! -d "${GOROOT_BOOTSTRAP}" ]
 then
-  echo "No bootstrap found at ${GOROOT_BOOTSTRAP}}"
+  echo "No bootstrap found at ${GOROOT_BOOTSTRAP}. Run ./setup.sh first."
   exit 1
 else
   echo "Bootstrap: ${GOROOT_BOOTSTRAP}"
@@ -30,9 +30,10 @@ fi
 
 set -x
 mkdir -p "${out}"
+
 pushd "${out}"
-
-curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/go${ver}.src.tar.gz" | tar -xz
-
-pushd go/src
-./make.bash
+  curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/go${ver}.src.tar.gz" | tar -xz
+  pushd go/src
+    ./make.bash
+  popd
+popd

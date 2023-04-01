@@ -56,7 +56,8 @@ jobs:
         with:
           path: |
             ./out/go-linux-riscv64-bootstrap.tbz
-          key: bootstrap
+            ./out/go-linux-riscv64-bootstrap.tbz.sha256.txt
+          key: bootstrap-hashed
 
       - name: Release cache
         uses: actions/cache@v3
@@ -64,7 +65,7 @@ jobs:
           path: |
             ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz.sha256.txt
             ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz
-          key: release-${{ env.VERSION }}
+          key: release-${{ env.VERSION }}-hashed
 
       - name: Setup
         run: ./setup.sh
@@ -81,5 +82,6 @@ jobs:
         with:
           files: |
             ./out/go-linux-riscv64-bootstrap.tbz
+            ./out/go-linux-riscv64-bootstrap.tbz.sha256.txt
             ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz.sha256.txt
             ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz
