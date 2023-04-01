@@ -15,7 +15,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   IMAGE: ghcr.io/${{ github.repository }}
   DOCKER_CLI_EXPERIMENTAL: "enabled"
-  VERSION: 1.20.2
+  GOVERSION: 1.20.2
 
 jobs:
   run:
@@ -49,9 +49,7 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: release-v2-${{ runner.os }}-go-${{ env.VERSION }}
-          restore-keys: |
-            release-v2-${{ runner.os }}-go
+          key: release-go-${{ env.VERSION }}
 
       - uses: actions/cache@v3
         name: Bootstrap cache
@@ -59,6 +57,14 @@ jobs:
           path: |
             ./out/go-linux-riscv64-bootstrap.tbz
           key: bootstrap
+
+      - name: Release cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz.sha256.txt
+            ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz
+          key: release-${{ env.VERSION }}
 
       - name: Setup
         run: ./setup.sh

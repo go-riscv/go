@@ -7,10 +7,7 @@ GOROOT_BOOTSTRAP="$(realpath ./out/go-linux-riscv64-bootstrap)"
 set -e
 set -o pipefail
 
-if [[ $# -eq 0 ]] ; then
-  echo 'No argument provided'
-  exit 1
-fi
+ver="${GOVERSION:-1.20.2}"
 
 if [ ! -d "${GOROOT_BOOTSTRAP}" ]
 then
@@ -20,16 +17,22 @@ else
   echo "Bootstrap: ${GOROOT_BOOTSTRAP}"
 fi
 
-VERSION=$1
-echo "Building version ${VERSION}"
+echo "Building version ${ver}"
 
-OUTPUT="./out/${VERSION}/"
+out="./out/${ver}"
+out_file="./out/go${ver}.linux-riscv64.tar.gz"
+
+if [ -f "${out_file}" ]
+then
+  echo "Already built as ${out_file}"
+  exit 0
+fi
 
 set -x
-mkdir -p "${OUTPUT}"
-pushd "${OUTPUT}"
+mkdir -p "${out}"
+pushd "${out}"
 
-curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/go${VERSION}.src.tar.gz" | tar -xz
+curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/go${ver}.src.tar.gz" | tar -xz
 
 pushd go/src
 ./make.bash
