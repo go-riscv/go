@@ -49,7 +49,7 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: release-go-${{ env.VERSION }}
+          key: release-go-${{ env.GOVERSION }}
 
       - uses: actions/cache@v3
         name: Bootstrap cache
@@ -63,18 +63,18 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz.sha256.txt
-            ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz
-          key: release-${{ env.VERSION }}-hashed
+            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz.sha256.txt
+            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz
+          key: release-${{ env.GOVERSION }}-hashed
 
       - name: Setup
         run: ./setup.sh
 
       - name: Build
-        run: ./build.sh ${{ env.VERSION }}
+        run: ./build.sh
 
       - name: Pack
-        run: ./pack.sh ${{ env.VERSION }}
+        run: ./pack.sh
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -83,5 +83,5 @@ jobs:
           files: |
             ./out/go-linux-riscv64-bootstrap.tbz
             ./out/go-linux-riscv64-bootstrap.tbz.sha256.txt
-            ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz.sha256.txt
-            ./out/go${{ env.VERSION }}.linux-riscv64.tar.gz
+            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz.sha256.txt
+            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz
