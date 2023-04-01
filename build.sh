@@ -25,5 +25,4 @@ pushd "${OUTPUT}"
 curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/go${VERSION}.src.tar.gz" | tar -xz
 
 pushd go/src
-./bootstrap.bash
 ./make.bash
