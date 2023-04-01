@@ -34,6 +34,7 @@ src="go${ver}.src.tar.gz"
 
 cd _out
 curl --proto '=https' --tlsv1.2 -sSf "https://dl.google.com/go/${src}" -o "${src}"
+echo "${GOSHA256} ${src}" | sha256sum --check
 tar -C "${ver}" -xzf "${src}"
 
 cd "${ver}/go/src"

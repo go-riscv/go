@@ -15,7 +15,13 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   IMAGE: ghcr.io/${{ github.repository }}
   DOCKER_CLI_EXPERIMENTAL: "enabled"
+
+  # https://go.dev/dl/
+  #
+  # latest stable version
   GOVERSION: 1.20.2
+  # SHA256 Checksum for "Source" Kind file
+  GOSHA256: 4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab
 
 jobs:
   run:
