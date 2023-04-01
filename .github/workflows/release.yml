@@ -58,5 +58,8 @@ jobs:
             ./out/
           key: ${{ github.ref }}
 
+      - name: Setup
+        run: ./setup.sh
+
       - name: Build
         run: ./build.sh 1.20.2
