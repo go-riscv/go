@@ -1,0 +1,48 @@
+{{- /*gotype: github.com/go-riscv/go/cmd/release.Context*/ -}}
+
+## Release
+
+### {{ .Version }}
+
+| File name | Kind | Size | SHA256 |
+|-----------|------|------|--------|
+{{- range .Files }}
+| [{{ .Name }}]({{ .URL }}) | {{ .Kind }} | {{ .Size }} | {{ .SHA256 }} |
+{{- end }}
+
+#### Download
+
+```bash
+wget "{{ .Archive.URL }}"
+```
+
+#### Verify
+
+```bash
+echo "{{ .Archive.SHA256 }} {{ .Archive.Name }}" | sha256sum --check
+```
+
+#### Install
+
+```bash
+rm -rf /usr/local/go && sudo tar -C /usr/local -xzf {{ .Archive.Name }}
+```
+
+#### Add to PATH
+
+You can create `/etc/profile.d/go.sh` with following contents:
+
+```bash
+#!/bin/bash
+# sets envs for golang
+if [ -z "$GOPATH" ]; then
+    export GOROOT="/usr/local/go"
+    export GOPATH="/go"
+    export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+fi
+```
+
+```bash
+sudo nano /etc/profile.d/go.sh
+sudo chmod +x /etc/profile.d/go.sh
+```

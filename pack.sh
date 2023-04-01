@@ -6,18 +6,11 @@ set -o pipefail
 ver="${GOVERSION:-1.20.2}"
 archive="go${ver}.linux-riscv64.tar.gz"
 
-hash () {
-  sha256sum "${archive}" > "${archive}.sha256.txt"
-  cat "${archive}.sha256.txt"
-  ls --human-readable --kibibytes -Sl "${archive}"
-}
-
-pushd out
+pushd _out
   archive="go${ver}.linux-riscv64.tar.gz"
   if [ -f "${archive}" ]
   then
     echo "Already built as ${archive}"
-    hash
     exit 0
   fi
 
@@ -34,5 +27,4 @@ pushd out
 
   echo "Creating ${archive}"
   tar -C "${ver}" -czf "${archive}" go
-  hash
 popd

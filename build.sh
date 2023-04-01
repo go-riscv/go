@@ -19,8 +19,8 @@ fi
 
 echo "Building version ${ver}"
 
-out="./out/${ver}"
-out_file="./out/go${ver}.linux-riscv64.tar.gz"
+out="_out/${ver}"
+out_file="_out/go${ver}.linux-riscv64.tar.gz"
 
 if [ -f "${out_file}" ]
 then

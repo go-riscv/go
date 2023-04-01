@@ -6,7 +6,7 @@ export GOOS=linux
 set -e
 set -o pipefail
 
-OUTPUT="./out/"
+OUTPUT="_out/"
 
 VERSION=1.20.2
 HASH=4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab
@@ -26,8 +26,6 @@ BOOTSTRAP_FILE="go-linux-riscv64-bootstrap.tbz"
 if [ -f "${BOOTSTRAP_FILE}" ]
 then
   echo "Using ${BOOTSTRAP_FILE}"
-  shasum --check ${BOOTSTRAP_FILE}.sha256.txt
-  echo "Checked, extracting."
   tar -xjf "${BOOTSTRAP_FILE}"
   echo "Bootstrap restored from ${BOOTSTRAP_FILE}"
   exit 0
@@ -44,7 +42,3 @@ echo "Building bootstrap"
 pushd "go/src"
   ./bootstrap.bash
 popd
-
-sha256sum "${BOOTSTRAP_FILE}" > "${BOOTSTRAP_FILE}.sha256.txt"
-cat "${BOOTSTRAP_FILE}.sha256.txt"
-ls --human-readable --kibibytes -Sl "${BOOTSTRAP_FILE}"

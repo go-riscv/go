@@ -22,14 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: sigstore/cosign-installer@v3.0.1
-      - uses: anchore/sbom-action/download-syft@v0
-      - uses: arduino/setup-task@v1
-        with:
-          version: 3.x
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: docker/setup-buildx-action@v2
 
       - name: Install Go
         uses: actions/setup-go@v4
@@ -49,23 +41,15 @@ jobs:
           path: |
             ${{ env.cache }}
             ${{ env.modcache }}
-          key: release-go-${{ env.GOVERSION }}
+          key: go-release-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            go-release-
 
       - uses: actions/cache@v3
         name: Bootstrap cache
         with:
-          path: |
-            ./out/go-linux-riscv64-bootstrap.tbz
-            ./out/go-linux-riscv64-bootstrap.tbz.sha256.txt
-          key: bootstrap-hashed
-
-      - name: Release cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz.sha256.txt
-            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz
-          key: release-${{ env.GOVERSION }}-hashed
+          path: _out/go-linux-riscv64-bootstrap.tbz
+          key: go-bootstrap
 
       - name: Setup
         run: ./setup.sh
@@ -76,12 +60,22 @@ jobs:
       - name: Pack
         run: ./pack.sh
 
+      - name: Checksums
+        run: ./checksums.sh
+
+      - name: Release notes
+        run: go run ./cmd/release > _out/release.md
+
+      - name: Print
+        run: cat _out/release.md
+
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
+          body_path: _out/release.md
           files: |
-            ./out/go-linux-riscv64-bootstrap.tbz
-            ./out/go-linux-riscv64-bootstrap.tbz.sha256.txt
-            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz.sha256.txt
-            ./out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz
+            _out/go-linux-riscv64-bootstrap.tbz
+            _out/checksums.sha256.txt
+            _out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz
+            _out/go${{ env.GOVERSION }}.src.tar.gz
