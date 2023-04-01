@@ -2,7 +2,7 @@
 
 export GOARCH=riscv64
 export GOOS=linux
-GOROOT_BOOTSTRAP="$(realpath ./out/go-linux-riscv64-bootstrap)"
+GOROOT_BOOTSTRAP="$(realpath _out/go-linux-riscv64-bootstrap)"
 
 set -e
 set -o pipefail
