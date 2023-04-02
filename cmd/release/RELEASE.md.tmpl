@@ -25,24 +25,38 @@ echo "{{ .Archive.SHA256 }} {{ .Archive.Name }}" | sha256sum --check
 #### Install
 
 ```bash
-rm -rf /usr/local/go && sudo tar -C /usr/local -xzf {{ .Archive.Name }}
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.2.linux-riscv64.tar.gz
 ```
 
 #### Add to PATH
 
-You can create `/etc/profile.d/go.sh` with following contents:
+You can create `/etc/profile.d/go.sh`.
+
+```bash
+sudo nano /etc/profile.d/go.sh
+```
+
+Write following contents:
 
 ```bash
 #!/bin/bash
 # sets envs for golang
 if [ -z "$GOPATH" ]; then
-    export GOROOT="/usr/local/go"
-    export GOPATH="/go"
-    export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+  export GOROOT="/usr/local/go"
+  export GOPATH="/go"
+  export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 fi
 ```
 
+Save and make it executable:
+
 ```bash
-sudo nano /etc/profile.d/go.sh
 sudo chmod +x /etc/profile.d/go.sh
+```
+
+You can check it without creating new shell session:
+
+```
+source /etc/profile.d/go.sh
+go version
 ```
