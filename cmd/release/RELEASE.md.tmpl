@@ -25,7 +25,7 @@ echo "{{ .Archive.SHA256 }} {{ .Archive.Name }}" | sha256sum --check
 #### Install
 
 ```bash
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.20.2.linux-riscv64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf {{ .Archive.Name }}
 ```
 
 #### Add to PATH
