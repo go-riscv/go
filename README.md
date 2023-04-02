@@ -1,4 +1,4 @@
-Tools for cross-compiling go compuler from source for `riscv64`.
+Tools for cross-compiling go compiler from source for `riscv64`.
 
 Reference:
 - [go#59113](https://github.com/golang/go/issues/59113) (declined): x/website: add linux/riscv64 downloads
