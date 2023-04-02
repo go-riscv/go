@@ -90,3 +90,10 @@ export GOSHA256=4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab
 ```
 make
 ```
+
+Your release will be available as `_out/go1.20.2.linux-riscv64.tar.gz`:
+
+```console
+$ file _out/go1.20.2.linux-riscv64.tar.gz
+_out/go1.20.2.linux-riscv64.tar.gz: gzip compressed data, from Unix, original size modulo 2^32 373309440
+```
