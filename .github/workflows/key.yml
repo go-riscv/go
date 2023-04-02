@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          # passphrase: ${{ secrets.PASSPHRASE }}
+      - name: List keys
+        run: gpg -K
+
