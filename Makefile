@@ -1,4 +1,4 @@
-all: bootstrap build pack checksums notes
+all: bootstrap build pack checksums
 
 build:
 	bash build.sh
