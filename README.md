@@ -88,5 +88,5 @@ export GOSHA256=4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab
 ```
 
 ```
-./setup.sh && ./build.sh && ./pack.sh && ./checksums.sh
+make
 ```

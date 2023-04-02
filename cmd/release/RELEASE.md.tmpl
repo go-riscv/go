@@ -7,7 +7,7 @@
 | File name | Kind | Size | SHA256 |
 |-----------|------|------|--------|
 {{- range .Files }}
-| [{{ .Name }}]({{ .URL }}) | {{ .Kind }} | {{ .Size }} | {{ .SHA256 }} |
+| [{{ .F .Name }}]({{ .URL }}) | {{ .F .Kind }} | {{ .F .Size }} | {{ .F .SHA256 }} |
 {{- end }}
 
 #### Download

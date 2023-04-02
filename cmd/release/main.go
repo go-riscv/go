@@ -19,6 +19,13 @@ type Context struct {
 	Archive File
 }
 
+func (f File) F(v string) string {
+	if f.Kind != "Archive" {
+		return v
+	}
+	return "**" + v + "**" // bold
+}
+
 type File struct {
 	Name   string // go-linux-riscv64-bootstrap.tbz
 	URL    string // https://github.com/go-riscv/go/releases/download/build-2204/go-linux-riscv64-bootstrap.tbz

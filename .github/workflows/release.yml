@@ -58,7 +58,7 @@ jobs:
           key: go-bootstrap
 
       - name: Setup
-        run: ./setup.sh
+        run: ./bootstrap.sh
 
       - name: Build
         run: ./build.sh
@@ -71,9 +71,6 @@ jobs:
 
       - name: Release notes
         run: go run ./cmd/release > _out/release.md
-
-      - name: Print
-        run: cat _out/release.md
 
       - name: Release
         uses: softprops/action-gh-release@v1
