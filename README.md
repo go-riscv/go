@@ -1,6 +1,18 @@
 Tools for cross-compiling go compuler from source for `riscv64`.
 
-## Compiled binaries
+Reference:
+- [go#59113](https://github.com/golang/go/issues/59113) (declined): x/website: add linux/riscv64 downloads
+- [go#53383](https://github.com/golang/go/issues/53383) clarify Go support policy for secondary ports
+- [go#53862][53862]: x/build: build cross-compiled releases for secondary ports
+
+> Our hope is to be able to publish binaries for all supported ports. See [#53862][53862].
+
+Currently, binaries for go compiler are not available for `linux/riscv64`, so `go-riscv` is
+providing them with a way to [build it locally](#building-locally).
+
+[53862]: https://github.com/golang/go/issues/53862
+
+## Download
 
 Use [latest release](https://github.com/go-riscv/go/releases/latest):
 
