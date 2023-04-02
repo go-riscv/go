@@ -27,6 +27,15 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      - name: List keys
+        run: gpg -K
+
       - uses: actions/checkout@v3
 
       - name: Install Go
@@ -69,6 +78,9 @@ jobs:
       - name: Checksums
         run: ./checksums.sh
 
+      - name: Sign
+        run: ./sign.sh
+
       - name: Release notes
         run: go run ./cmd/release > _out/release.md
 
@@ -79,6 +91,9 @@ jobs:
           body_path: _out/release.md
           files: |
             _out/go-linux-riscv64-bootstrap.tbz
+            _out/go-linux-riscv64-bootstrap.tbz.asc
             _out/checksums.sha256.txt
+            _out/checksums.sha256.txt.asc
             _out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz
+            _out/go${{ env.GOVERSION }}.linux-riscv64.tar.gz.asc
             _out/go${{ env.GOVERSION }}.src.tar.gz

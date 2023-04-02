@@ -60,3 +60,20 @@ You can check it without creating new shell session:
 source /etc/profile.d/go.sh
 go version
 ```
+
+#### Verify signature
+
+Import the public key:
+```bash
+gpg --batch --keyserver keyserver.ubuntu.com --recv-keys '943040B9817AC4C7'
+```
+
+Download the signature:
+```bash
+wget "{{ .Archive.URL }}.sig"
+```
+
+Verify the signature:
+```bash
+gpg --batch --verify {{ .Archive.Name }}.sig {{ .Archive.Name }}
+```
