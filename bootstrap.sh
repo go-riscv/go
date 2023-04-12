@@ -8,8 +8,8 @@ set -o pipefail
 
 OUTPUT="_out/"
 
-VERSION=1.20.2
-HASH=4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab
+VERSION=1.20.3
+HASH=e447b498cde50215c4f7619e5124b0fc4e25fb5d16ea47271c47f278e7aa763a
 FILE="go${VERSION}.src.tar.gz"
 
 mkdir -p "${OUTPUT}"

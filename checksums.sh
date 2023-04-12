@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-ver="${GOVERSION:-1.20.2}"
+ver="${GOVERSION:-1.20.3}"
 archive="go${ver}.linux-riscv64.tar.gz"
 bootstrap=go-linux-riscv64-bootstrap.tbz
 src=go${ver}.src.tar.gz

@@ -7,7 +7,7 @@ GOROOT_BOOTSTRAP="$(realpath _out/go-linux-riscv64-bootstrap)"
 set -e
 set -o pipefail
 
-ver="${GOVERSION:-1.20.2}"
+ver="${GOVERSION:-1.20.3}"
 
 if [ ! -d "${GOROOT_BOOTSTRAP}" ]
 then
