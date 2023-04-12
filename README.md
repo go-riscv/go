@@ -16,13 +16,13 @@ providing them with a way to [build it locally](#building-locally).
 
 Use [latest release](https://github.com/go-riscv/go/releases/latest):
 
-### 1.20.2
+### 1.20.3
 
-| File name                                                                                                                      | Kind      | Size  | SHA256                                                           |
-|--------------------------------------------------------------------------------------------------------------------------------|-----------|-------|------------------------------------------------------------------|
-| [go1.20.2.linux-riscv64.tar.gz](https://github.com/go-riscv/go/releases/download/build-230401/go1.20.2.linux-riscv64.tar.gz)   | Archive   | 154MB | bff926ef6051a768288f3c473b59a17603254b8011197c631dc2fa9b0a46b98b |
-| [go-linux-riscv64-bootstrap.tbz](https://github.com/go-riscv/go/releases/download/build-230401/go-linux-riscv64-bootstrap.tbz) | Bootstrap | 88MB  | d06f0c6e6d9a141271f41d61a8d0e813cc8f162e9a2d7bf119c40ee3e7a5c2b8 |
-| [go1.20.2.src.tar.gz](https://github.com/go-riscv/go/releases/download/build-230401/go1.20.2.src.tar.gz)                       | Source    | 24MB  | 4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab |
+| File name | Kind | Size | SHA256 |
+|-----------|------|------|--------|
+| [**go1.20.3.linux-riscv64.tar.gz**](https://github.com/go-riscv/go/releases/download/build-230412.0/go1.20.3.linux-riscv64.tar.gz) | **Archive** | **154MB** | **cc04195c17885aab1264df24d09e417854bebbc6e567e422cdce1eb6399053bc** |
+| [go-linux-riscv64-bootstrap.tbz](https://github.com/go-riscv/go/releases/download/build-230412.0/go-linux-riscv64-bootstrap.tbz) | Bootstrap | 88MB | 9172512332c26f8adccce9a0177292f19efa2f0b5eca5ac4855539973a301195 |
+| [go1.20.3.src.tar.gz](https://github.com/go-riscv/go/releases/download/build-230412.0/go1.20.3.src.tar.gz) | Source | 24MB | e447b498cde50215c4f7619e5124b0fc4e25fb5d16ea47271c47f278e7aa763a |
 
 #### Download
 
