@@ -70,10 +70,10 @@ gpg --batch --keyserver keyserver.ubuntu.com --recv-keys '943040B9817AC4C7'
 
 Download the signature:
 ```bash
-wget "{{ .Archive.URL }}.sig"
+wget "{{ .Archive.URL }}.asc"
 ```
 
 Verify the signature:
 ```bash
-gpg --batch --verify {{ .Archive.Name }}.sig {{ .Archive.Name }}
+gpg --batch --verify {{ .Archive.Name }}.asc {{ .Archive.Name }}
 ```
