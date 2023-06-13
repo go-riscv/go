@@ -19,9 +19,9 @@ env:
   # https://go.dev/dl/
   #
   # latest stable version
-  GOVERSION: 1.20.4
+  GOVERSION: 1.20.5
   # SHA256 Checksum for "Source" Kind file
-  GOSHA256: 9f34ace128764b7a3a4b238b805856cc1b2184304df9e5690825b0710f4202d6
+  GOSHA256: 9a15c133ba2cfafe79652f4815b62e7cfc267f68df1b9454c6ab2a3ca8b96a88
 
 jobs:
   run:
@@ -41,7 +41,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: "1.20.4"
+          go-version: "1.20.5"
           cache: false
 
       - name: Go env
