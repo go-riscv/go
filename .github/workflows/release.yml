@@ -19,9 +19,9 @@ env:
   # https://go.dev/dl/
   #
   # latest stable version
-  GOVERSION: 1.20.5
+  GOVERSION: 1.20.7
   # SHA256 Checksum for "Source" Kind file
-  GOSHA256: 9a15c133ba2cfafe79652f4815b62e7cfc267f68df1b9454c6ab2a3ca8b96a88
+  GOSHA256: 2c5ee9c9ec1e733b0dbbc2bdfed3f62306e51d8172bf38f4f4e542b27520f597
 
 jobs:
   run:
